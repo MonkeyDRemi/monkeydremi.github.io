@@ -3,221 +3,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Remi VAVICHANDRAN - Cybersécurité</title>
+    <title>Remi VAVICHANDRAN | Cybersecurity Specialist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --text-color: #333;
-            --bg-color: #f4f7f6;
+            --bg: #0a0a0a;
+            --surface: #121212;
+            --accent: #00ffaa; /* Un vert fluo plus moderne que le bleu */
+            --text: #ffffff;
+            --muted: #888888;
+            --border: #222222;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            margin: 0;
-            padding: 20px;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: var(--bg); 
+            color: var(--text); 
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.5;
+            overflow-x: hidden;
         }
 
-        .container {
-            max-width: 900px;
-            margin: auto;
-            background: white;
-            padding: 40px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        /* Effet de grain de film discret */
+        body::before {
+            content: "";
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: url(https://grainy-gradients.vercel.app/noise.svg);
+            opacity: 0.05; pointer-events: none; z-index: 100;
+        }
+
+        /* Barre de progression de scan en haut */
+        .scan-line {
+            position: fixed; top: 0; left: 0; height: 2px;
+            background: var(--accent);
+            width: 0%; z-index: 1000;
+            transition: width 0.2s;
+            box-shadow: 0 0 15px var(--accent);
         }
 
         header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 20px;
-            margin-bottom: 30px;
+            padding: 10vh 5vw;
+            border-bottom: 1px solid var(--border);
         }
 
-        .header-text h1 {
-            margin: 0;
-            color: var(--primary-color);
-            text-transform: uppercase;
+        .status-pill {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(0, 255, 170, 0.1);
+            color: var(--accent);
+            padding: 5px 12px; border-radius: 50px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem; margin-bottom: 2rem;
+            border: 1px solid var(--accent);
         }
 
-        .header-text h2 {
-            margin: 5px 0;
-            color: var(--secondary-color);
-            font-weight: 400;
-        }
+        .status-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
 
-        .contact-info {
-            font-size: 0.9em;
-            text-align: right;
-        }
+        h1 { font-size: clamp(3rem, 10vw, 6rem); font-weight: 700; line-height: 0.9; letter-spacing: -3px; }
+        .hero-sub { color: var(--muted); font-size: 1.5rem; margin-top: 1rem; max-width: 600px; }
 
-        section {
-            margin-bottom: 25px;
+        section { padding: 80px 5vw; border-bottom: 1px solid var(--border); }
+        .section-title { 
+            font-family: 'JetBrains Mono', monospace; 
+            color: var(--accent); 
+            font-size: 0.9rem; margin-bottom: 3rem; 
+            display: flex; align-items: center; gap: 15px;
         }
+        .section-title::after { content: ""; height: 1px; flex: 1; background: var(--border); }
 
-        h3 {
-            border-left: 5px solid var(--secondary-color);
-            padding-left: 10px;
-            color: var(--primary-color);
-            text-transform: uppercase;
-            font-size: 1.1em;
-            margin-bottom: 15px;
-        }
-
-        .grid {
+        /* Grid de compétences style "Dashboard" */
+        .skills-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1px; background: var(--border);
+            border: 1px solid var(--border);
         }
-
-        .exp-item, .edu-item {
-            margin-bottom: 15px;
+        .skill-box {
+            background: var(--bg);
+            padding: 30px;
+            transition: 0.3s;
         }
+        .skill-box:hover { background: var(--surface); }
+        .skill-box h3 { font-size: 1.2rem; margin-bottom: 15px; color: var(--accent); }
+        .skill-list { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--muted); list-style: none; }
+        .skill-list li::before { content: "→ "; color: var(--accent); }
 
-        .date {
-            font-weight: bold;
-            color: var(--secondary-color);
-            font-size: 0.9em;
+        /* Expériences style Clean Minimal */
+        .exp-row {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            margin-bottom: 40px;
         }
+        .exp-date { font-family: 'JetBrains Mono', monospace; color: var(--muted); }
+        .exp-content h3 { font-size: 1.5rem; margin-bottom: 10px; }
+        .exp-content .company { color: var(--accent); font-weight: 500; margin-bottom: 15px; display: block; }
+        .exp-content ul { color: var(--muted); padding-left: 18px; }
 
-        .job-title {
-            font-weight: bold;
-            display: block;
+        /* Floating Contact */
+        .contact-btn {
+            position: fixed; bottom: 30px; right: 30px;
+            background: var(--accent); color: var(--bg);
+            padding: 15px 30px; border-radius: 5px;
+            font-weight: 700; text-decoration: none;
+            box-shadow: 0 10px 30px rgba(0,255,170,0.3);
+            transition: 0.3s; z-index: 100;
         }
+        .contact-btn:hover { transform: scale(1.05); background: white; }
 
-        ul {
-            padding-left: 20px;
-            margin: 5px 0;
-        }
-
-        .skills-tag {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .tag {
-            background: #e1e8ed;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 0.85em;
-        }
-
-        @media (max-width: 600px) {
-            .grid, header {
-                flex-direction: column;
-                text-align: center;
-            }
-            .contact-info {
-                text-align: center;
-                margin-top: 15px;
-            }
-            .grid {
-                grid-template-columns: 1fr;
-            }
+        @media (max-width: 768px) {
+            .exp-row { grid-template-columns: 1fr; gap: 10px; }
+            h1 { font-size: 3.5rem; }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <header>
-        <div class="header-text">
-            <h1>Remi VAVICHANDRAN</h1> [cite: 1]
-            <h2>ALTERNANCE - Cybersécurité</h2> [cite: 2]
-            <p>Étudiant à l'ESGI, recherche une alternance de 1 an (Sept. 2026).<br>
-            Rythme : 1 semaine cours / 3 semaines entreprise.</p> [cite: 3]
-        </div>
-        <div class="contact-info">
-            <p>📞 +337 49 41 98 45<br> [cite: 10]
-            📧 <a href="mailto:remi.vavichandran@proton.me">remi.vavichandran@proton.me</a><br> [cite: 10]
-            📍 Chelles (77500)<br> [cite: 10]
-            🚗 Permis B (véhiculé)</p> [cite: 10]
-        </div>
-    </header>
+<div class="scan-line" id="progressBar"></div>
 
-    <div class="grid">
-        <section>
-            <h3>Expériences Professionnelles</h3> [cite: 6]
-            <div class="exp-item">
-                <span class="date">Déc. 2024 - Juil. 2026</span> [cite: 14]
-                <span class="job-title">Alternant Chargé de Sécurité IT - Paris Nuisible</span> [cite: 14]
-                <ul>
-                    <li>Mise en place SIEM/EDR Wazuh [cite: 15]</li>
-                    <li>Maintien & configurations systèmes (PC, serveurs) [cite: 16]</li>
-                    <li>Conformité RGPD & données utilisateurs [cite: 17]</li>
-                    <li>Sécurisation serveurs & amélioration Web [cite: 18]</li>
-                </ul>
-            </div>
-            <div class="exp-item">
-                <span class="date">Août - Sept. 2024</span> [cite: 19]
-                <span class="job-title">Stagiaire Informatique - Auto FR Distribution</span> [cite: 19]
-                <ul>
-                    <li>Support IT (matériel et logiciels) [cite: 20]</li>
-                    <li>Amélioration ergonomie back-office web [cite: 21]</li>
-                </ul>
-            </div>
-        </section>
+<header>
+    <div class="status-pill">
+        <span class="status-dot"></span> DISPONIBLE - SEPTEMBRE 2026
+    </div>
+    <h1>REMI<br>VAVICHANDRAN</h1>
+    <p class="hero-sub">Expert en cybersécurité offensive & défensive. <br>Étudiant en Master ESGI spécialisé dans la protection des infrastructures critiques.</p>
+</header>
 
-        <section>
-            <h3>Formation</h3> [cite: 9]
-            <div class="edu-item">
-                <span class="date">2025 - 2027</span> [cite: 31]
-                <span class="job-title">Master Expert Architecture & Sécurité IT</span> [cite: 30]
-                <p>ESGI Paris</p> [cite: 30]
-            </div>
-            <div class="edu-item">
-                <span class="date">2022 - 2025</span> [cite: 34]
-                <span class="job-title">Bachelor Chef de Projet Systèmes & Réseaux</span> [cite: 32]
-                <p>ESGI Paris</p> [cite: 33]
-            </div>
-            
-            <h3>Certifications</h3> [cite: 5]
-            <div class="skills-tag">
-                <span class="tag">MOOC ANSSI</span> [cite: 13]
-                <span class="tag">Cisco CCNA Intro to Cyber</span> [cite: 13]
-                <span class="tag">Digital Safety Awareness</span> [cite: 13]
-            </div>
-        </section>
+<section id="skills">
+    <div class="section-title">01 / STACK TECHNIQUE</div>
+    <div class="skills-grid">
+        <div class="skill-box">
+            <h3>Défensif (Blue Team)</h3>
+            <ul class="skill-list">
+                <li>Wazuh SIEM/EDR</li>
+                <li>SOC Operations</li>
+                <li>Loki / Grafana / Promtail</li>
+                <li>Pfsense & Suricata</li>
+            </ul>
+        </div>
+        <div class="skill-box">
+            <h3>Offensif (Red Team)</h3>
+            <ul class="skill-list">
+                <li>Nmap / Burp Suite</li>
+                <li>Wireshark / Aircrack</li>
+                <li>Metasploit / Hashcat</li>
+                <li>Vulnerability Assessment</li>
+            </ul>
+        </div>
+        <div class="skill-box">
+            <h3>Systèmes & Cloud</h3>
+            <ul class="skill-list">
+                <li>Hardening Linux (ANSSI)</li>
+                <li>Active Directory Security</li>
+                <li>VMware / Proxmox</li>
+                <li>Azure Cloud Security</li>
+            </ul>
+        </div>
+        <div class="skill-box">
+            <h3>Développement</h3>
+            <ul class="skill-list">
+                <li>Python Security Scripting</li>
+                <li>Rust / C</li>
+                <li>Bash Automation</li>
+                <li>SQL / PHP Security</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section id="experience">
+    <div class="section-title">02 / EXPÉRIENCES RÉCENTES</div>
+    
+    <div class="exp-row">
+        <div class="exp-date">2024 — 2026</div>
+        <div class="exp-content">
+            <h3>Alternant Chargé de Sécurité IT</h3>
+            <span class="company">Paris Nuisible</span>
+            <ul>
+                <li>Implémentation complète d'un SIEM/EDR Wazuh.</li>
+                <li>Surveillance des flux de logs et durcissement des serveurs.</li>
+                <li>Mise en conformité RGPD des infrastructures.</li>
+            </ul>
+        </div>
     </div>
 
-    <section>
-        <h3>Compétences Techniques</h3> [cite: 7]
-        <div class="grid">
-            <div>
-                <strong>Offensive/Défensive :</strong> [cite: 24]
-                <p class="skills-tag">
-                    <span class="tag">Wireshark</span> <span class="tag">Nmap</span> <span class="tag">Burp Suite</span>
-                    <span class="tag">Wazuh (SIEM/EDR)</span> <span class="tag">Grafana/Loki</span> <span class="tag">Pfsense</span>
-                </p>
-            </div>
-            <div>
-                <strong>Systèmes & Réseaux :</strong> [cite: 24]
-                <p class="skills-tag">
-                    <span class="tag">AD/Windows Server</span> <span class="tag">Kali Linux</span> <span class="tag">Azure</span>
-                    <span class="tag">TCP/IP</span> <span class="tag">VLAN/VPN</span> <span class="tag">Firewalls</span>
-                </p>
-            </div>
+    <div class="exp-row">
+        <div class="exp-date">2024 (2 mois)</div>
+        <div class="exp-content">
+            <h3>Stagiaire Informatique</h3>
+            <span class="company">Auto FR Distribution</span>
+            <ul>
+                <li>Audit et sécurisation du back-office web.</li>
+                <li>Support technique et gestion des infrastructures systèmes.</li>
+            </ul>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section>
-        <h3>Projets Phares</h3> [cite: 8]
-        <ul>
-            <li><strong>Honeypot/SOC :</strong> Collecte/visualisation logs avec Promtail/Loki/Wazuh sur Proxmox. [cite: 29]</li>
-            <li><strong>Architecture Réseaux :</strong> Infrastructure complète (VLAN, Routage, VPN, Adressage). [cite: 28]</li>
-            <li><strong>Linux Administration :</strong> Durcissement (ANSSI), Apache, DNS, DHCP. [cite: 27]</li>
-        </ul>
-    </section>
+<section id="projects">
+    <div class="section-title">03 / PROJETS MAJEURS</div>
+    <div class="exp-row">
+        <div class="exp-date">LAB SOC</div>
+        <div class="exp-content">
+            <h3>Honeypot & Monitoring Distribué</h3>
+            <p style="color: var(--muted);">Mise en place d'un réseau de leurres (Honeypots) sous Proxmox avec centralisation des logs via la stack Loki/Grafana et alertes en temps réel via Wazuh.</p>
+        </div>
+    </div>
+</section>
 
-    <footer style="font-size: 0.8em; color: #777; border-top: 1px solid #ddd; padding-top: 10px; margin-top: 20px;">
-        Langues : Anglais B2 (TOEIC), Tamoul C2, Allemand B1 | Qualités : Autonomie, Rigueur, Esprit d'équipe. [cite: 11, 12]
-    </footer>
-</div>
+<a href="mailto:remi.vavichandran@proton.me" class="contact-btn">INITIER LE CONTACT</a>
+
+<script>
+    // Animation de la barre de scan au scroll
+    window.onscroll = function() {
+        let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        let scrolled = (winScroll / height) * 100;
+        document.getElementById("progressBar").style.width = scrolled + "%";
+    };
+</script>
 
 </body>
 </html>
