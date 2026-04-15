@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Remi VAVICHANDRAN - Cybersécurité</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --text-color: #333;
+            --bg-color: #f4f7f6;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .header-text h1 {
+            margin: 0;
+            color: var(--primary-color);
+            text-transform: uppercase;
+        }
+
+        .header-text h2 {
+            margin: 5px 0;
+            color: var(--secondary-color);
+            font-weight: 400;
+        }
+
+        .contact-info {
+            font-size: 0.9em;
+            text-align: right;
+        }
+
+        section {
+            margin-bottom: 25px;
+        }
+
+        h3 {
+            border-left: 5px solid var(--secondary-color);
+            padding-left: 10px;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .exp-item, .edu-item {
+            margin-bottom: 15px;
+        }
+
+        .date {
+            font-weight: bold;
+            color: var(--secondary-color);
+            font-size: 0.9em;
+        }
+
+        .job-title {
+            font-weight: bold;
+            display: block;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin: 5px 0;
+        }
+
+        .skills-tag {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: #e1e8ed;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.85em;
+        }
+
+        @media (max-width: 600px) {
+            .grid, header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .contact-info {
+                text-align: center;
+                margin-top: 15px;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="header-text">
+            <h1>Remi VAVICHANDRAN</h1> [cite: 1]
+            <h2>ALTERNANCE - Cybersécurité</h2> [cite: 2]
+            <p>Étudiant à l'ESGI, recherche une alternance de 1 an (Sept. 2026).<br>
+            Rythme : 1 semaine cours / 3 semaines entreprise.</p> [cite: 3]
+        </div>
+        <div class="contact-info">
+            <p>📞 +337 49 41 98 45<br> [cite: 10]
+            📧 <a href="mailto:remi.vavichandran@proton.me">remi.vavichandran@proton.me</a><br> [cite: 10]
+            📍 Chelles (77500)<br> [cite: 10]
+            🚗 Permis B (véhiculé)</p> [cite: 10]
+        </div>
+    </header>
+
+    <div class="grid">
+        <section>
+            <h3>Expériences Professionnelles</h3> [cite: 6]
+            <div class="exp-item">
+                <span class="date">Déc. 2024 - Juil. 2026</span> [cite: 14]
+                <span class="job-title">Alternant Chargé de Sécurité IT - Paris Nuisible</span> [cite: 14]
+                <ul>
+                    <li>Mise en place SIEM/EDR Wazuh [cite: 15]</li>
+                    <li>Maintien & configurations systèmes (PC, serveurs) [cite: 16]</li>
+                    <li>Conformité RGPD & données utilisateurs [cite: 17]</li>
+                    <li>Sécurisation serveurs & amélioration Web [cite: 18]</li>
+                </ul>
+            </div>
+            <div class="exp-item">
+                <span class="date">Août - Sept. 2024</span> [cite: 19]
+                <span class="job-title">Stagiaire Informatique - Auto FR Distribution</span> [cite: 19]
+                <ul>
+                    <li>Support IT (matériel et logiciels) [cite: 20]</li>
+                    <li>Amélioration ergonomie back-office web [cite: 21]</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h3>Formation</h3> [cite: 9]
+            <div class="edu-item">
+                <span class="date">2025 - 2027</span> [cite: 31]
+                <span class="job-title">Master Expert Architecture & Sécurité IT</span> [cite: 30]
+                <p>ESGI Paris</p> [cite: 30]
+            </div>
+            <div class="edu-item">
+                <span class="date">2022 - 2025</span> [cite: 34]
+                <span class="job-title">Bachelor Chef de Projet Systèmes & Réseaux</span> [cite: 32]
+                <p>ESGI Paris</p> [cite: 33]
+            </div>
+            
+            <h3>Certifications</h3> [cite: 5]
+            <div class="skills-tag">
+                <span class="tag">MOOC ANSSI</span> [cite: 13]
+                <span class="tag">Cisco CCNA Intro to Cyber</span> [cite: 13]
+                <span class="tag">Digital Safety Awareness</span> [cite: 13]
+            </div>
+        </section>
+    </div>
+
+    <section>
+        <h3>Compétences Techniques</h3> [cite: 7]
+        <div class="grid">
+            <div>
+                <strong>Offensive/Défensive :</strong> [cite: 24]
+                <p class="skills-tag">
+                    <span class="tag">Wireshark</span> <span class="tag">Nmap</span> <span class="tag">Burp Suite</span>
+                    <span class="tag">Wazuh (SIEM/EDR)</span> <span class="tag">Grafana/Loki</span> <span class="tag">Pfsense</span>
+                </p>
+            </div>
+            <div>
+                <strong>Systèmes & Réseaux :</strong> [cite: 24]
+                <p class="skills-tag">
+                    <span class="tag">AD/Windows Server</span> <span class="tag">Kali Linux</span> <span class="tag">Azure</span>
+                    <span class="tag">TCP/IP</span> <span class="tag">VLAN/VPN</span> <span class="tag">Firewalls</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Projets Phares</h3> [cite: 8]
+        <ul>
+            <li><strong>Honeypot/SOC :</strong> Collecte/visualisation logs avec Promtail/Loki/Wazuh sur Proxmox. [cite: 29]</li>
+            <li><strong>Architecture Réseaux :</strong> Infrastructure complète (VLAN, Routage, VPN, Adressage). [cite: 28]</li>
+            <li><strong>Linux Administration :</strong> Durcissement (ANSSI), Apache, DNS, DHCP. [cite: 27]</li>
+        </ul>
+    </section>
+
+    <footer style="font-size: 0.8em; color: #777; border-top: 1px solid #ddd; padding-top: 10px; margin-top: 20px;">
+        Langues : Anglais B2 (TOEIC), Tamoul C2, Allemand B1 | Qualités : Autonomie, Rigueur, Esprit d'équipe. [cite: 11, 12]
+    </footer>
+</div>
+
+</body>
+</html>
